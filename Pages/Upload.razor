@@ -1,0 +1,20 @@
+﻿
+
+
+
+<MatButton Style="color:white" @onclick="uploadFile">Upload</MatButton>
+
+
+<p>Test: @currentNum</p>
+
+
+@code {
+
+    private int currentNum = 0;
+
+    private void uploadFile()
+    {
+        currentNum++;
+    }
+
+}

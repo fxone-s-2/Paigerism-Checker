@@ -1,0 +1,48 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">Plaigarism Checker</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <MatNavMenu>
+        <MatNavItem href ="" Title="Item 1"><MatIcon Icon="house">
+            <MatButton href=""> Home</MatButton></MatIcon>
+           
+        </MatNavItem>
+        <MatNavItem href="counter" Title="Item 2"><MatIcon Icon="apps">
+            <MatButton href="counter"> Counter</MatButton></MatIcon>
+            
+        </MatNavItem>
+        <MatNavItem href="" Title="Item 3">
+            About
+        </MatNavItem>
+
+
+
+
+    </MatNavMenu>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    [Inject] IJSRuntime JS { get; set; }
+
+    bool navSubMenuOpenState;
+
+    
+
+    async Task ClickMe()
+    {
+        Console.WriteLine("test");
+        await JS.InvokeAsync<object>("alert", "Successful!");
+    }
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
